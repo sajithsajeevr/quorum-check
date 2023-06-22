@@ -10,7 +10,8 @@ COPY data data
 RUN mkdir -p /data /permissions /var/log/quorum \
     && addgroup -g 1000 quorum \
     && adduser -u 1000 -G quorum -s /bin/sh -D quorum \
-    && chown -R quorum:quorum /data /permissions /var/log/quorum 
+    && chown -R quorum:quorum /data /permissions /var/log/quorum \
+    && chmod -R 777 /data /permissions /var/log/quorum
 USER quorum
 
 ENTRYPOINT ["docker-entrypoint.sh"]
